@@ -18,11 +18,23 @@ const Book = ({ title, author, pages, freeBookmark }) => {
         </section>
     )
 };
+
+const Hiring = () =>
+    <div>
+        <p>The Library is hiring. Go to www.library.com/jobs for more info.</p>    
+    </div>
+const NotHiring = () =>
+<div>
+    <p>The Library is not hiring. Check back later for more.</p>    
+</div>
+
+
 class Library extends Component {
     
     state = { 
         open: true,
-        freeBookmark: true
+        freeBookmark: true,
+        hiring: false
     }
     
     toggleOpenClosed = () => {
@@ -34,6 +46,7 @@ class Library extends Component {
         const { books } = this.props;
         return (
             <div>
+                {this.state.hiring ? <Hiring /> : <NotHiring />}
                 <h1>The library is {this.state.open ? 'open' : 'closed'}</h1>
                 <button onClick={this.toggleOpenClosed}>Change</button>
                 {books.map(
