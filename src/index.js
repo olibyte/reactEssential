@@ -90,9 +90,14 @@ import { render } from 'react-dom';
 // }
 
 class FavoriteColorForm extends Component {
-    state = { value: ' '}
+    state = { value: ''}
     newColor = e =>
         this.setState({ value: e.target.value })
+
+    submit = e => {
+        console.log(`New color: ${this.state.value}`)
+        e.preventDefault()
+    }
     render() {
         return (
             <form onSubmit={this.submit}>
@@ -101,6 +106,7 @@ class FavoriteColorForm extends Component {
                         type="color"
                         onChange={this.newColor} />
                 </label>
+                <button>Submit</button>
             </form>
         )
     }
